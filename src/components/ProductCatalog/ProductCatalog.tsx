@@ -8,10 +8,20 @@ interface ProductCatalogProps {
 }
 
 const ProductCatalog: FC<ProductCatalogProps> = ({ products }) => {
+  const handleAddCart = () => {
+    alert("Добавлено в корзину");
+  };
+  const handleToggleFavorite = () => {
+    alert("Изменено избранное");
+  };
   return (
     <Row>
       {products.map((product) => (
-        <Product product={product} />
+        <Product
+          product={product}
+          onAddCart={handleAddCart}
+          onToggleFavorite={handleToggleFavorite}
+        />
       ))}
     </Row>
   );

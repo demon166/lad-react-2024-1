@@ -1,4 +1,5 @@
 import ProductCatalog from "./components/ProductCatalog/ProductCatalog.tsx";
+import MyButton from "./components/MyButton/MyButton.tsx";
 
 function App() {
   const products = [
@@ -26,6 +27,30 @@ function App() {
   return (
     <>
       <ProductCatalog products={products} />
+      <MyButton />
+
+      <div
+        onClick={() => {
+          alert("Клик на ДИВ");
+        }}
+        onClickCapture={() => {
+          alert("Клик на ДИВ Capture");
+        }}
+        style={{
+          width: "200px",
+          height: "200px",
+          border: "1px solid red",
+        }}
+      >
+        <button
+          onClick={(event) => {
+            alert("Клик на кнопку");
+            event.stopPropagation();
+          }}
+        >
+          Кнпока
+        </button>
+      </div>
     </>
   );
 }

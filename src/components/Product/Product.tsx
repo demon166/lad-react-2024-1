@@ -4,9 +4,15 @@ import { IProduct } from "../../types/products.ts";
 
 interface ProductProps {
   product: IProduct;
+  onAddCart: () => void;
+  onToggleFavorite: () => void;
 }
 
-const Product: FC<ProductProps> = ({ product }) => {
+const Product: FC<ProductProps> = ({
+  product,
+  onAddCart,
+  onToggleFavorite,
+}) => {
   return (
     <div>
       <div className={classes.img}>
@@ -17,8 +23,13 @@ const Product: FC<ProductProps> = ({ product }) => {
       <div>{product.discount}</div>
       <div>{product.rating}</div>
       <div>
-        {product.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
+        <button onClick={onToggleFavorite}>
+          {product.isFavorite
+            ? "Удалить из избранного"
+            : "Добавить в избранное"}
+        </button>
       </div>
+      <button onClick={onAddCart}>Купить</button>
     </div>
   );
 };
