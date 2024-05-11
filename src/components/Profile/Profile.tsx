@@ -2,8 +2,8 @@ import classes from './Profile.module.scss'
 
 const Profile = () => {
     const user = {
-        firstName: "Дмитрий",
-        lastName: "Куликов",
+        firstName: "Иван",
+        lastName: "Иванов",
         imageUrl: "/vite.svg"
     }
 
