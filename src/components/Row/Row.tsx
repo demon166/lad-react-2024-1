@@ -5,6 +5,7 @@ interface RowProps {
   direction?: "row" | "column";
 }
 const Row: FC<RowProps> = ({ children, direction = "row" }) => {
+  console.log("Row");
   return (
     <div style={{ display: "flex", flexDirection: direction }}>{children}</div>
   );
