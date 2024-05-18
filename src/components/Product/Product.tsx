@@ -1,9 +1,9 @@
 import classes from "./Product.module.scss";
 import { FC } from "react";
-import { IProduct } from "../../types/products.ts";
+import { ProductItem } from "../../types/products.ts";
 
 interface ProductProps {
-  product: IProduct;
+  product: ProductItem;
   onAddCart: () => void;
   onToggleFavorite: () => void;
 }
@@ -13,6 +13,7 @@ const Product: FC<ProductProps> = ({
   onAddCart,
   onToggleFavorite,
 }) => {
+  const discount = product.discount && <div>product.discount.value</div>;
   return (
     <div>
       <div className={classes.img}>
@@ -20,7 +21,7 @@ const Product: FC<ProductProps> = ({
       </div>
       <strong>{product.name}</strong>
       <div>{product.price}</div>
-      <div>{product.discount}</div>
+      {discount}
       <div>{product.rating}</div>
       <div>
         <button onClick={onToggleFavorite}>

@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { IProduct } from "../../types/products.ts";
+import { ProductItem } from "../../types/products.ts";
 import Product from "../Product/Product.tsx";
 import Row from "../Row/Row.tsx";
 
 interface ProductCatalogProps {
-  products: IProduct[];
+  products: ProductItem[];
 }
 
 const ProductCatalog: FC<ProductCatalogProps> = ({ products }) => {
@@ -15,9 +15,10 @@ const ProductCatalog: FC<ProductCatalogProps> = ({ products }) => {
     alert("Изменено избранное");
   };
   return (
-    <Row>
+    <Row direction="row">
       {products.map((product) => (
         <Product
+          key={product.id}
           product={product}
           onAddCart={handleAddCart}
           onToggleFavorite={handleToggleFavorite}
