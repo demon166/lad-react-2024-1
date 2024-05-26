@@ -1,8 +1,8 @@
-import ProductCatalog from "./components/ProductCatalog/ProductCatalog.tsx";
-import { ProductItem } from "./types/products.ts";
-import { CartType } from "./types/cart.ts";
-import { useState } from "react";
-import Cart from "./components/Cart/Cart.tsx";
+import { useImmer } from "use-immer";
+import { ProductItem, CartType } from "@/types";
+import { ProductCatalog, Cart } from "@/components";
+import TestComponent from "@/components/TestComponent/TestComponent";
+import ThemesChanger from "@/components/ThemesChanger/ThemesChanger";
 
 const products: ProductItem[] = [
   {
@@ -37,7 +37,7 @@ const products: ProductItem[] = [
   },
 ];
 function App() {
-  const [cart, setCart] = useState<CartType>({
+  const [cart, updateCart] = useImmer<CartType>({
     items: [],
     totalPrice: 0,
   });
@@ -47,7 +47,13 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <ProductCatalog products={products} setCart={setCart} />
+            <ThemesChanger />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <TestComponent />
+            <ProductCatalog products={products} updateCart={updateCart} />
             <hr />
             <Cart cart={cart} />
           </div>

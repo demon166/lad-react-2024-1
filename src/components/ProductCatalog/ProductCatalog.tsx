@@ -1,15 +1,14 @@
-import { Dispatch, FC, SetStateAction } from "react";
-import { ProductItem } from "../../types/products.ts";
-import Product from "../Product/Product.tsx";
-import Row from "../Row/Row.tsx";
-import { CartType } from "../../types/cart.ts";
+import { FC } from "react";
+import { Updater } from "use-immer";
+import { ProductItem, CartType } from "@/types";
+import { Product, Row } from "@/components";
 
 interface ProductCatalogProps {
   products: ProductItem[];
-  setCart: Dispatch<SetStateAction<CartType>>;
+  updateCart: Updater<CartType>;
 }
 
-const ProductCatalog: FC<ProductCatalogProps> = ({ products, setCart }) => {
+const ProductCatalog: FC<ProductCatalogProps> = ({ products, updateCart }) => {
   const handleAddCart = () => {};
   const handleToggleFavorite = () => {
     alert("Изменено избранное");
@@ -22,7 +21,7 @@ const ProductCatalog: FC<ProductCatalogProps> = ({ products, setCart }) => {
           key={product.id}
           product={product}
           onAddCart={handleAddCart}
-          setCart={setCart}
+          updateCart={updateCart}
           onToggleFavorite={handleToggleFavorite}
         />
       ))}
