@@ -1,50 +1,30 @@
-import { FC, useContext, useState } from "react";
-import { Updater } from "use-immer";
-import { ProductItem, CartType } from "@/types";
+import { ChangeEventHandler, FC, useContext } from "react";
+import { ProductItem } from "@/types";
 import ChangeCount from "./ChangeCount/ChangeCount";
-import { CounterContext, ThemeContext } from "@/context";
-import { increment } from "@/context/Counter";
+import { CartContext, ThemeContext } from "@/context";
+import { changeQuantity } from "@/context/Cart";
 
 interface ProductProps {
   product: ProductItem;
-  onAddCart?: () => void;
-  onToggleFavorite: () => void;
-  updateCart: Updater<CartType>;
 }
 
-const Product: FC<ProductProps> = ({
-  product,
-  onToggleFavorite,
-  updateCart,
-}) => {
-  const [count, setCount] = useState(0);
-  const { state, dispatch } = useContext(CounterContext);
+const Product: FC<ProductProps> = ({ product }) => {
+  const { cart, dispatch } = useContext(CartContext);
+  const count = cart.items.find((item) => product.id === item.id)?.count || 0;
   const { theme } = useContext(ThemeContext);
 
   const discount = product.discount && <div>product.discount.value</div>;
 
   const handleIncrement = () => {
-    const newValue = count + 1;
-    setCount(newValue);
-
-    updateCart((draft) => {
-      const findProduct = draft.items.find((item) => item.id === product.id);
-      if (findProduct) {
-        findProduct.count += 1;
-      } else {
-        draft.items.push({ ...product, count: 1 });
-      }
-    });
+    dispatch(changeQuantity(product, count + 1));
   };
 
   const handleDecrement = () => {
-    setCount((value) => value - 1);
-    updateCart((draft) => {
-      const findProduct = draft.items.find((item) => item.id === product.id);
-      if (findProduct) {
-        findProduct.count -= 1;
-      }
-    });
+    dispatch(changeQuantity(product, count - 1));
+  };
+
+  const handleChangeCount: ChangeEventHandler<HTMLInputElement> = (event) => {
+    dispatch(changeQuantity(product, +event.target.value));
   };
 
   return (
@@ -56,13 +36,6 @@ const Product: FC<ProductProps> = ({
         <div>{product.price}</div>
         {discount}
         <div>{product.rating}</div>
-        <div>
-          <button onClick={onToggleFavorite} className="btn btn-info">
-            {product.isFavorite
-              ? "Удалить из избранного"
-              : "Добавить в избранное"}
-          </button>
-        </div>
 
         <button className="btn btn-primary" onClick={handleIncrement}>
           Купить
@@ -72,17 +45,11 @@ const Product: FC<ProductProps> = ({
             count={count}
             onDecrement={handleDecrement}
             onIncrement={handleIncrement}
+            onChangeCount={handleChangeCount}
           />
         )}
       </div>
-      <h1>{state.count}</h1>
-      <button
-        onClick={() => {
-          dispatch(increment(5));
-        }}
-      >
-        Прибавить 5
-      </button>
+      <h1>{}</h1>
     </div>
   );
 };

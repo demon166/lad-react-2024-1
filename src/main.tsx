@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { CounterProvider, ThemeProvider } from "@/context";
+import { ThemeProvider } from "@/context";
+import CartProvider from "@/context/Cart/CartProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
-      <CounterProvider>
+      <CartProvider>
         <App />
-      </CounterProvider>
+      </CartProvider>
     </ThemeProvider>
   </React.StrictMode>,
 );

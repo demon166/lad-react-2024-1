@@ -3,7 +3,7 @@ import { ThemeContext } from "@/context";
 import { ThemeVariable } from "@/context/Theme";
 
 const ThemesChanger = () => {
-  const { setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setTheme(event.target.value as ThemeVariable);
@@ -18,7 +18,7 @@ const ThemesChanger = () => {
           value="light"
           id="theme-light"
           onChange={handleChange}
-          checked
+          checked={theme === "light"}
         />
         Светлая тема
       </label>
@@ -29,7 +29,8 @@ const ThemesChanger = () => {
           value="dark"
           id="theme-dark"
           onChange={handleChange}
-        />{" "}
+          checked={theme === "dark"}
+        />
         Темная тема
       </label>
     </div>

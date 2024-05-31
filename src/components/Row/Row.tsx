@@ -1,13 +1,22 @@
 import { FC, ReactNode } from "react";
+import classNames from "classnames";
 
 interface RowProps {
   children?: ReactNode;
-  direction?: "row" | "column";
+  gap?: 0 | 1 | 2 | 3 | 4;
 }
-const Row: FC<RowProps> = ({ children, direction = "row" }) => {
-  console.log("Row");
+const Row: FC<RowProps> = ({ children, gap }) => {
   return (
-    <div style={{ display: "flex", flexDirection: direction }}>{children}</div>
+    <div
+      className={classNames([
+        "row",
+        {
+          [`gap-${gap}`]: gap === undefined,
+        },
+      ])}
+    >
+      {children}
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
 export { default as CounterProvider } from "./Counter/CounterProvider";
 export { default as ThemeProvider } from "./Theme/ThemeProvider";
-export { CounterContext } from "./Counter";
+export { CartContext } from "./Cart";
 export { ThemeContext } from "./Theme";

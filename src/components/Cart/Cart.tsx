@@ -1,21 +1,17 @@
-import { CartType } from "../../types/cart.ts";
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { CartContext } from "@/context";
 
-interface CartProps {
-  cart: CartType;
-}
-
-const Cart: FC<CartProps> = (props) => {
+const Cart: FC = () => {
   const {
-    cart: { totalPrice, items },
-  } = props;
+    cart: { items, totalPrice },
+  } = useContext(CartContext);
   return (
     <div>
       <h3>Корзина</h3>
       <ul>
         {items.length > 0 ? (
           items.map((product) => (
-            <li>
+            <li key={product.id}>
               {product.name} - {product.count}
             </li>
           ))

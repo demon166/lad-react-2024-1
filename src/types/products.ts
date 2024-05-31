@@ -9,10 +9,7 @@ export interface ProductItem {
   };
   rating: number;
   isFavorite: boolean;
-}
-
-export interface ProductItemInCart extends ProductItem {
-  count: number;
+  count?: number;
 }
 
 export type ProductItemType = {

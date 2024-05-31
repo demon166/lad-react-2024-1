@@ -1,6 +1,6 @@
-import { ProductItemInCart } from "./products.ts";
+import { ProductItemInCart } from "./products";
 
 export interface CartType {
   items: ProductItemInCart[];
-  totalPrice: number;
+  totalPrice?: number;
 }

@@ -1,8 +1,10 @@
-import { useImmer } from "use-immer";
-import { ProductItem, CartType } from "@/types";
-import { ProductCatalog, Cart } from "@/components";
-import TestComponent from "@/components/TestComponent/TestComponent";
-import ThemesChanger from "@/components/ThemesChanger/ThemesChanger";
+import { ProductItem } from "@/types";
+import {
+  Cart,
+  ProductCatalog,
+  TestComponent,
+  ThemesChanger,
+} from "@/components";
 
 const products: ProductItem[] = [
   {
@@ -36,12 +38,8 @@ const products: ProductItem[] = [
     isFavorite: true,
   },
 ];
-function App() {
-  const [cart, updateCart] = useImmer<CartType>({
-    items: [],
-    totalPrice: 0,
-  });
 
+function App() {
   return (
     <>
       <div className="container">
@@ -53,9 +51,9 @@ function App() {
         <div className="row">
           <div className="col-12">
             <TestComponent />
-            <ProductCatalog products={products} updateCart={updateCart} />
+            <ProductCatalog products={products} />
             <hr />
-            <Cart cart={cart} />
+            <Cart />
           </div>
         </div>
       </div>
