@@ -3,8 +3,20 @@ import { CartContext } from "@/context";
 
 const Cart: FC = () => {
   const {
-    cart: { items, totalPrice },
+    cart: { items },
   } = useContext(CartContext);
+
+  const totalPrice = () => {
+    if (items) {
+      return items.reduce((previousValue, currentValue) => {
+        let value = previousValue;
+        if (currentValue.count) {
+          value = previousValue + currentValue.price * currentValue.count;
+        }
+        return value;
+      }, 0);
+    }
+  };
   return (
     <div>
       <h3>Корзина</h3>
@@ -19,7 +31,7 @@ const Cart: FC = () => {
           <p>Корзина пуста</p>
         )}
       </ul>
-      <p>Общая стоимость: {totalPrice} р.</p>
+      <p>Общая стоимость: {totalPrice()} р.</p>
     </div>
   );
 };

@@ -9,9 +9,8 @@ interface ChangeCountProps {
 
 const ChangeCount: FC<ChangeCountProps> = (props) => {
   const { count, onDecrement, onIncrement, onChangeCount } = props;
-  console.log("ChangeCount");
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <button className="btn btn-light" onClick={onDecrement}>
         -
       </button>
@@ -21,6 +20,7 @@ const ChangeCount: FC<ChangeCountProps> = (props) => {
         min={0}
         value={count}
         onChange={onChangeCount}
+        style={{ width: "50px", marginInline: "10px" }}
       />
       <button className="btn btn-light" onClick={onIncrement}>
         +

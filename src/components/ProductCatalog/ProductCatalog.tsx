@@ -8,7 +8,7 @@ interface ProductCatalogProps {
 
 const ProductCatalog: FC<ProductCatalogProps> = ({ products }) => {
   return (
-    <Row direction="row">
+    <Row>
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}

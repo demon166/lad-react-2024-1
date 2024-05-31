@@ -16,11 +16,11 @@ export const cartReducer: ImmerReducer<CartType, CartAction> = (
       draftState.items = [];
       break;
     case ActionType.CHANGE_QUANTITY: {
-      console.log(payload);
       if (payload.quantity === 0) {
         draftState.items = draftState.items.filter(
           (product) => product.id !== payload.product.id,
         );
+        break;
       }
       const findElement = draftState.items.find(
         (product) => product.id === payload.product.id,
