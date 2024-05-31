@@ -1,10 +1,7 @@
 import { ProductItem } from "@/types";
-import {
-  Cart,
-  ProductCatalog,
-  TestComponent,
-  ThemesChanger,
-} from "@/components";
+import { Cart, ProductCatalog, ThemesChanger } from "@/components";
+import { useContext } from "react";
+import { ThemeContext } from "@/context";
 
 const products: ProductItem[] = [
   {
@@ -40,9 +37,10 @@ const products: ProductItem[] = [
 ];
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   return (
     <>
-      <div className="container">
+      <div className="container" data-bs-theme={theme}>
         <div className="row">
           <div className="col-12">
             <ThemesChanger />
@@ -50,7 +48,6 @@ function App() {
         </div>
         <div className="row">
           <div className="col-12">
-            <TestComponent />
             <ProductCatalog products={products} />
             <hr />
             <Cart />
