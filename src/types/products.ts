@@ -28,3 +28,10 @@ export type ProductItemType = {
 export type ProductItemInCartType = {
   count: number;
 } & ProductItemType;
+
+export interface ProductResponse {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+}

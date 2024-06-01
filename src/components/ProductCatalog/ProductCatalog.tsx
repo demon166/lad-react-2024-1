@@ -1,18 +1,34 @@
 import { FC } from "react";
-import { ProductItem } from "@/types";
 import { Product, Row } from "@/components";
+import { getProducts } from "@/services";
+import { useQuery } from "@tanstack/react-query";
 
-interface ProductCatalogProps {
-  products: ProductItem[];
-}
+const ProductCatalog: FC = () => {
+  const {
+    data: products = [],
+    isLoading,
+    refetch,
+    status,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
 
-const ProductCatalog: FC<ProductCatalogProps> = ({ products }) => {
+  console.log(status);
+
+  if (isLoading) {
+    return <h1>Загрузка</h1>;
+  }
+
   return (
-    <Row>
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
-    </Row>
+    <>
+      <button onClick={() => refetch()}> Получить сново </button>
+      <Row>
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </Row>
+    </>
   );
 };
 
