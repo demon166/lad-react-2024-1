@@ -1,32 +1,55 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Product, Row } from "@/components";
 import { getProducts } from "@/services";
 import { useQuery } from "@tanstack/react-query";
+import Pagination from "@/components/Pagination/Pagination";
 
 const ProductCatalog: FC = () => {
-  const {
-    data: products = [],
-    isLoading,
-    refetch,
-    status,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [perPage, setPerPage] = useState<number>(3);
+
+  const { data, isLoading, isError, isFetching } = useQuery({
+    queryKey: ["products", currentPage, perPage],
+    queryFn: () => getProducts(currentPage, perPage),
   });
 
-  console.log(status);
-
-  if (isLoading) {
+  if (isFetching) {
     return <h1>Загрузка</h1>;
   }
 
+  if (isError || !data) {
+    return <h1>Ошибка</h1>;
+  }
+
+  const { first, prev, next, last, pages } = data;
+
   return (
     <>
-      <button onClick={() => refetch()}> Получить сново </button>
       <Row>
-        {products.map((product) => (
+        <select
+          className="form-control"
+          onChange={(event) => {
+            setPerPage(+event.target.value);
+          }}
+          value={perPage}
+        >
+          <option value="3">3</option>
+          <option value="6">6</option>
+          <option value="9">9</option>
+          <option value="12">12</option>
+        </select>
+        {data.products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          first={first}
+          prev={prev}
+          next={next}
+          last={last}
+          pages={pages}
+        />
       </Row>
     </>
   );

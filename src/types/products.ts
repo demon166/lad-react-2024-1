@@ -7,10 +7,15 @@ export interface ProductItem {
     type: "percent" | "fix";
     value: number;
   };
-  rating: number;
-  isFavorite: boolean;
+  rating?: number;
+  isFavorite?: boolean;
   count?: number;
 }
+
+export type ProductStoreRequest = Omit<
+  ProductItem,
+  "id" | "discount" | "rating" | "isFavorite" | "count"
+>;
 
 export type ProductItemType = {
   id: number;
@@ -30,8 +35,11 @@ export type ProductItemInCartType = {
 } & ProductItemType;
 
 export interface ProductResponse {
-  id: number;
-  name: string;
-  imageUrl: string;
-  price: number;
+  first: number;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  pages: number;
+  items: number;
+  products: ProductItem[];
 }

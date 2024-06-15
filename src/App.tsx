@@ -1,6 +1,7 @@
 import { Cart, ProductCatalog, ThemesChanger } from "@/components";
 import { useContext } from "react";
 import { ThemeContext } from "@/context";
+import CreateProduct from "@/components/CreateProduct/CreateProduct";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -9,7 +10,10 @@ function App() {
     <>
       <div className="container" data-bs-theme={theme}>
         <div className="row">
-          <div className="col-12">
+          <div className="col-9">
+            <CreateProduct />
+          </div>
+          <div className="col-3">
             <ThemesChanger />
           </div>
         </div>

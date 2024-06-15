@@ -1,9 +1,76 @@
 {
   "products": [
-    { "id": 1, "name": "Наручные часы мужские SKMEI 1251", "imageUrl":     "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg", "price": 8165 },
-    { "id": 2, "name": "Продукт 2", "imageUrl":     "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg", "price": 8165 }
-  ],
-  "filters": [
-    {"price":  {"min":  0, "max":  3000}, }
+    {
+      "id": "1",
+      "name": "Наручные часы мужские SKMEI 1251",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 8165
+    },
+    {
+      "id": "2",
+      "name": "Продукт 2",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 8165
+    },
+    {
+      "id": "cd18",
+      "name": "Наручные часы мужские SKMEI 1252",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 123666
+    },
+    {
+      "id": "2c27",
+      "name": "Новые часы123123123213123123",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 555500000
+    },
+    {
+      "id": "6de4",
+      "name": "Новые часы",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 1234
+    },
+    {
+      "id": "e138",
+      "name": "Новые часы",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 1234
+    },
+    {
+      "id": "5aa8",
+      "name": "Новые часы 4",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 966333
+    },
+    {
+      "id": "d459",
+      "name": "Новые часы",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 56156151
+    },
+    {
+      "id": "2a62",
+      "name": "Новые часы",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 6666
+    },
+    {
+      "id": "de6a",
+      "name": "Новые часы",
+      "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/214/156/886/511/117/11/600004929632b0.jpeg",
+      "price": 12312
+    },
+    {
+      "id": "630d",
+      "name": "",
+      "imageUrl": "",
+      "price": 0
+    },
+    {
+      "id": "70b8",
+      "name": "",
+      "imageUrl": "",
+      "price": 0
+    }
   ]
 }
