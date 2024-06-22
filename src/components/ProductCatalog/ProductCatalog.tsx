@@ -8,12 +8,12 @@ const ProductCatalog: FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [perPage, setPerPage] = useState<number>(3);
 
-  const { data, isLoading, isError, isFetching } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["products", currentPage, perPage],
     queryFn: () => getProducts(currentPage, perPage),
   });
 
-  if (isFetching) {
+  if (isLoading) {
     return <h1>Загрузка</h1>;
   }
 

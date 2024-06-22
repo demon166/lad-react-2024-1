@@ -3,6 +3,8 @@ import { ProductItem } from "@/types";
 import ChangeCount from "./ChangeCount/ChangeCount";
 import { CartContext } from "@/context";
 import { changeQuantity } from "@/context/Cart";
+import { generatePath, Link } from "react-router-dom";
+import { RouteVariable } from "@/router/constants";
 
 interface ProductProps {
   product: ProductItem;
@@ -35,7 +37,13 @@ const Product: FC<ProductProps> = ({ product }) => {
         />
       </div>
       <div className="card-body flex-grow-0">
-        <h5 className="card-title">{product.name}</h5>
+        <Link
+          to={generatePath(RouteVariable.productItem, {
+            productId: product.id,
+          })}
+        >
+          <h5 className="card-title">{product.name}</h5>
+        </Link>
         <div>{product.price}</div>
         {discount}
         <div>{product.rating}</div>

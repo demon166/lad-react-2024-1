@@ -1,5 +1,9 @@
 import { api } from "@/app/api";
-import { ProductResponse, ProductStoreRequest } from "@/types/products";
+import {
+  ProductItem,
+  ProductResponse,
+  ProductStoreRequest,
+} from "@/types/products";
 
 export const getProducts = async (page: number, per_page: number = 3) => {
   const { data } = await api.get<ProductResponse>("/products", {
@@ -20,6 +24,11 @@ export const getProducts = async (page: number, per_page: number = 3) => {
       return newData;
     },
   });
+  return data;
+};
+
+export const getProduct = async (id?: string) => {
+  const { data } = await api.get<ProductItem>(`/products/${id}`);
   return data;
 };
 
