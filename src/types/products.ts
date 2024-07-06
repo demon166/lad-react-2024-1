@@ -41,5 +41,5 @@ export interface ProductResponse {
   last: number;
   pages: number;
   items: number;
-  products: ProductItem[];
+  products: Array<ProductItem>;
 }

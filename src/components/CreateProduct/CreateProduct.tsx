@@ -1,6 +1,7 @@
 import { storeProduct } from "@/services/products";
 import { ProductStoreRequest } from "@/types/products";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import CreateProductForm from "@/components/CreateProduct/CreateProductForm";
 
 const CreateProduct = () => {
   const queryClient = useQueryClient();
@@ -25,25 +26,7 @@ const CreateProduct = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="">Название</label>
-          <input type="text" name="name" />
-        </div>
-        <div>
-          <label htmlFor="">Изображение</label>
-          <input type="text" name="imageUrl" />
-        </div>
-        <div>
-          <label htmlFor="">Цена</label>
-          <input type="number" name="price" />
-        </div>
-        <div>
-          <button className="btn btn-success" type="submit">
-            Сохранить
-          </button>
-        </div>
-      </form>
+      <CreateProductForm handleSubmit={handleSubmit} />
     </div>
   );
 };

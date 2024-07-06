@@ -3,4 +3,5 @@ export enum RouteVariable {
   catalog = "/products",
   productItem = "/products/:productId",
   about = "/about",
+  counter = "/counter",
 }

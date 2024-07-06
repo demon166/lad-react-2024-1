@@ -3,6 +3,7 @@ import { AboutPage, CatalogPage, HomePage, ErrorPage } from "@/views";
 import PublicLayout from "@/layout/PublicLayout/PublicLayout";
 import ProductDetailPage from "@/views/ProductDetailPage/ProductDetailPage";
 import { RouteVariable } from "@/router/constants";
+import CounterPage from "@/views/CounterPage/CounterPage";
 export const publicRouter = createBrowserRouter([
   {
     path: RouteVariable.home,
@@ -27,6 +28,10 @@ export const publicRouter = createBrowserRouter([
       {
         path: RouteVariable.about,
         element: <AboutPage />,
+      },
+      {
+        path: RouteVariable.counter,
+        element: <CounterPage />,
       },
     ],
   },
